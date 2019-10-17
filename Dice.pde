@@ -1,3 +1,4 @@
+int sumz=0;
 void setup()
 {
 	size(500,500);
@@ -6,6 +7,7 @@ void setup()
 }
 void draw()
 {
+  
 	background((int)(Math.random()*256),(int)(Math.random()*256),(int)(Math.random()*256));
 	for(int x = 25; x<500; x = x+80)
   {
@@ -13,9 +15,11 @@ void draw()
 		Die hi = new Die(x,y);
 		hi.roll();
     hi.show();
+    sumz += hi.numz;
     }
 	}
-	
+	fill(0);
+  text("The total is " + sumz, 250, 490);
 }
 void mousePressed()
 {
@@ -30,11 +34,11 @@ class Die //models one single dice cube
 	{
 		myX = x;
 		myY = y;
+    
 	}
 	void roll()
 	{
 		numz = (int)(Math.random()*6)+1;
-
 
 	}
 	void show()
